@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Alphabetize a String</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        textarea {
+            width: 300px;
+            height: 100px;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Alphabetize a String</h1>
+
+    <textarea id="inputString" placeholder="Enter your text here"></textarea>
+    <button onclick="alphabetize()">Alphabetize</button>
+
+    <p id="result"></p>
+
+    <script>function alphabetize() {
+            const inputString = document.getElementById("inputString").value;
+            const result = alphabetizeString(inputString);
+            document.getElementById("result").textContent = result;
+        }
+
+        function alphabetizeString(str) {
+            return str
+                .toLowerCase()
+                .split('')
+                .sort()
+                .join('');
+        }
+    </script>
+</body>
+
+</html>

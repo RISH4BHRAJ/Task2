@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Date and Time Display</title>
+    <style>
+        button {
+            background-color: lightgray;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        p {
+            font-family: monospace;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="showDate()">Show Date</button>
+    <p id="dateDisplay"></p>
+
+    <button onclick="showTime()">Show Time</button>
+    <p id="timeDisplay"></p>
+
+    <script>
+        function showDate() {
+            const today = new Date();
+            const day = today.getDate();
+            const month = today.toLocaleString('default', { month: 'long' });
+            const year = today.getFullYear();
+
+            const formattedDate = `${day}/${month}/${year}`;
+            document.getElementById("dateDisplay").textContent = formattedDate;
+        }
+
+        function showTime() {
+            const now = new Date();
+            const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' };
+            document.getElementById("timeDisplay").textContent = now.toLocaleString('en-US', options);
+        }
+    </script>
+</body>
+
+</html>

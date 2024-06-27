@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Car Animation</title>
+        <style>
+            body {
+                background-color: #f0f0f0;
+                font-family: Arial, sans-serif;
+                text-align: center;
+                padding-top: 50px;
+            }
+            #car-container {
+                position: fixed;
+                margin-bottom: 20px;
+            }
+            #car {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 200px;
+                height: auto;
+            }
+            #controls-container {
+                display: flex;
+                justify-content: center;
+            }
+            #controls {
+                margin-top: 150px;
+            }
+        </style>
+    </head>
+    <body>
+      <h1>Task 7</h1>
+        <div id="car-container">
+            <img id="car" src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/i20-n-line/Highlights/pc/i20-n-line_pc.png" alt="Car" />
+        </div>
+        <div id="controls-container">
+            <div id="controls">
+                <button type="button" onclick="startAnimation()">Start</button>
+                <button type="button" onclick="stopAnimation()">Stop</button>
+            </div>
+        </div>
+        <script>
+            var car = document.getElementById('car');
+            var pos = 0;
+            var interval;
+            var carWidth = car.width;
+
+            car.onload = function () {
+                carWidth = car.width;
+            };
+
+            function startAnimation() {
+                if (!interval) {
+                    interval = setInterval(frame, 5);
+                }
+            }
+
+            function stopAnimation() {
+                clearInterval(interval);
+                interval = null;
+            }
+
+            function frame() {
+                if (pos >= window.innerWidth - carWidth) {
+                    pos = 0;
+                } else {
+                    pos++;
+                }
+                car.style.left = pos + 'px';
+            }
+        </script>
+    </body>
+</html>
